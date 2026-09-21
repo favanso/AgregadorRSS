@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pauta — seu portal a partir de um RSS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<script>
+  try {
+    var t = localStorage.getItem('pauta:theme');
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+</script>
+
+  <link rel="stylesheet" href="pauta.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <div class="bar-row">
+      <div class="brand">Pauta</div>
+      <form id="addForm" class="add" novalidate>
+        <input id="rssUrl" type="url" inputmode="url" placeholder="Cole aqui o endereço do RSS" autocomplete="off" aria-label="Endereço do feed RSS">
+        <button id="addBtn" class="btn primary" type="submit">Adicionar</button>
+      </form>
+      <button id="theme" class="btn" type="button" aria-label="Alternar modo escuro">Modo escuro</button>
+    </div>
+    <p id="msg" class="msg" role="status"></p>
+    <div id="tools" class="tools" hidden>
+      <div id="chips" class="chips" role="group" aria-label="Filtrar por feed"></div>
+      <label class="search">
+        <span style="position:absolute;left:-9999px">Buscar nas manchetes</span>
+        <input id="q" type="search" placeholder="Buscar nas manchetes…" autocomplete="off">
+      </label>
+      <button id="refresh" class="btn" type="button">Atualizar</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="app" aria-live="polite"></main>
+
+<footer class="wrap foot">
+  <p id="status"></p>
+  <p>Os feeds são lidos pelo serviço rss2json. Cada título leva à matéria original.</p>
+</footer>
+
+
+  <script src="pauta.js" defer></script>
+</body>
+</html>
